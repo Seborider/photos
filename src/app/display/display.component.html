@@ -1,1 +1,5 @@
-<p>display works!</p>
+<div>
+    <button (click)="onClick()">Give me a photo</button>
+</div>
+
+<img  *ngIf="photoUrl" [src]="photoUrl"/>
