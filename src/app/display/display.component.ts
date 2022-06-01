@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotoService } from '../photo.service';
 
 @Component({
   selector: 'app-display',
@@ -6,8 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent implements OnInit {
+  photoUrl: string | undefined;
 
-  constructor() { }
+  constructor(private photoservice: PhotoService) {
+    this.fetchPhoto()
+   }
+
+  onClick() {
+    this.fetchPhoto()
+  }
+
+  fetchPhoto(){
+    this.photoservice.getPhoto().subscribe((response) => {
+      this.photoUrl = response.urls.regular;
+  }
+  )}
 
   ngOnInit(): void {
   }
